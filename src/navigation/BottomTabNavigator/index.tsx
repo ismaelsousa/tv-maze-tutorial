@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "styled-components/native";
 import Icon from "../../common/components/Icon";
-import Detail from "../../screens/Detail/detail.view";
 import Favorites from "../../screens/Favorites/favorites.view";
 import Home from "../../screens/Home/home.view";
+import Search from "../../screens/Search/search.view";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -32,7 +32,7 @@ const BottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="Search"
-        component={Detail}
+        component={Search}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Icon icon="search" color={color} size={size} />
