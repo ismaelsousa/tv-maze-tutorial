@@ -1,13 +1,84 @@
 import React from "react";
-import { View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  RefreshControl,
+  View,
+  SafeAreaView,
+} from "react-native";
+import { useTheme } from "styled-components/native";
+import Container from "../../common/components/Container";
+import ShowCover from "../../common/components/ShowCover";
+import Spacer from "../../common/components/Spacer";
+import { flatListStyleSheet } from "../../common/utils/flatlist";
 import useHomeController from "./home.controller";
 
-// import {Container} from './styles'
+import { Logo } from "./styles";
 
-const Home: React.FC = () => {
-  const { loading, shows } = useHomeController();
+const Home = () => {
+  const { colors, spacing } = useTheme();
+  const { loading, shows, currentPage, isRefreshing, loadShows } =
+    useHomeController();
 
-  return <View style={{ flex: 1, backgroundColor: "pink" }} />;
+  return (
+    <Container>
+      <SafeAreaView>
+        <FlatList
+          data={shows}
+          numColumns={2}
+          columnWrapperStyle={flatListStyleSheet.columnWrapperStyle}
+          style={{ paddingHorizontal: spacing.sm }}
+          ListHeaderComponent={() => (
+            <View>
+              <Logo />
+            </View>
+          )}
+          renderItem={({ item, index }) => (
+            <ShowCover
+              key={`${item.id + index + item.name}`}
+              url={item.image?.medium}
+              title={item.name}
+              onPress={() => {
+                //navegar para a tela de detalhes
+              }}
+            />
+          )}
+          ItemSeparatorComponent={() => <Spacer height={spacing.sm} />}
+          ListFooterComponent={() => {
+            return (
+              <View>
+                {loading && (
+                  <>
+                    <Spacer height={spacing.lg} />
+                    <ActivityIndicator
+                      size={"small"}
+                      color={colors.onSecondary}
+                    />
+                  </>
+                )}
+                <Spacer height={spacing.sm} />
+              </View>
+            );
+          }}
+          refreshControl={
+            <RefreshControl
+              enabled={!isRefreshing}
+              tintColor={colors.onSecondary}
+              colors={[colors.onSecondary]}
+              refreshing={isRefreshing}
+              onRefresh={() => loadShows(0, true)}
+            />
+          }
+          onEndReached={() => {
+            if (!loading) {
+              loadShows(currentPage);
+            }
+          }}
+          onEndReachedThreshold={0.5}
+        />
+      </SafeAreaView>
+    </Container>
+  );
 };
 
 export default Home;
