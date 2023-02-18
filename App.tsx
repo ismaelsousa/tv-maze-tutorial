@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
+import Avatar from "./src/common/components/Avatar";
 import Container from "./src/common/components/Container";
 import Content from "./src/common/components/Content";
 import Icon from "./src/common/components/Icon";
@@ -22,6 +23,11 @@ export default function App() {
           <Text size={30} color="onSecondary">
             2 Meu componente de text
           </Text>
+          <Avatar />
+          <Avatar
+            size="large"
+            url="https://br.web.img3.acsta.net/pictures/18/08/01/20/13/3535250.jpg"
+          />
         </Content>
       </Container>
     </ThemeProvider>
