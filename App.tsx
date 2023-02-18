@@ -1,3 +1,4 @@
+import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
@@ -15,29 +16,14 @@ import Spacer from "./src/common/components/Spacer";
 import Text from "./src/common/components/Text";
 import { episodeMocked } from "./src/common/constants/mocks/episode.mock";
 import { defaultTheme } from "./src/common/constants/styles/theme/defaultTheme";
+import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
 
 export default function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container>
-        <Content>
-          <Spacer height={20} />
-          <BackButton
-            onPress={() => {
-              console.log("clicou no botão in");
-            }}
-          />
-          <Spacer height={20} />
-          <Input loading />
-          <Spacer height={20} />
-          <Text numberOfLines={1} size={30} color="onSecondary">
-            2 Meu componente de text 2 Meu componente de text2 Meu componente de
-            text2 Meu componente de text
-          </Text>
-
-          <EpisodeCard episode={episodeMocked}></EpisodeCard>
-        </Content>
-      </Container>
+      <NavigationContainer>
+        <BottomTabNavigator />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
