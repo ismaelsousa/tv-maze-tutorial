@@ -5,6 +5,7 @@ import Avatar from "./src/common/components/Avatar";
 import BackButton from "./src/common/components/BackButton";
 import Container from "./src/common/components/Container";
 import Content from "./src/common/components/Content";
+import EpisodeCover from "./src/common/components/EpisodeCover";
 import Icon from "./src/common/components/Icon";
 import Input from "./src/common/components/Input";
 import NotFound from "./src/common/components/NotFound";
@@ -31,22 +32,11 @@ export default function App() {
             2 Meu componente de text 2 Meu componente de text2 Meu componente de
             text2 Meu componente de text
           </Text>
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <ShowCover
-              onPress={() => {}}
-              url="https://static.tvmaze.com/uploads/images/medium_portrait/1/4600.jpg"
-              title="The Flash"
-            />
-            <ShowCover url="https://static.tvmaze.com/uploads/images/medium_portrait/1/4600.jpg" />
-          </View>
-          <Spacer height={20} />
-          <Avatar
+
+          <EpisodeCover
             size="small"
-            url="https://br.web.img3.acsta.net/pictures/18/08/01/20/13/3535250.jpg"
+            url="https://static.tvmaze.com/uploads/images/medium_landscape/15/38639.jpg"
           />
-          <NotFound />
         </Content>
       </Container>
     </ThemeProvider>
