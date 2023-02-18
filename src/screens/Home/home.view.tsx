@@ -10,12 +10,17 @@ import { useTheme } from "styled-components/native";
 import Container from "../../common/components/Container";
 import ShowCover from "../../common/components/ShowCover";
 import Spacer from "../../common/components/Spacer";
+import useMyNavigation from "../../common/hooks/useMyNavigation";
 import { flatListStyleSheet } from "../../common/utils/flatlist";
 import useHomeController from "./home.controller";
 
 import { Logo } from "./styles";
 
 const Home = () => {
+  /**
+   * Navigation
+   */
+  const { navigate } = useMyNavigation();
   const { colors, spacing } = useTheme();
   const { loading, shows, currentPage, isRefreshing, loadShows } =
     useHomeController();
@@ -39,7 +44,7 @@ const Home = () => {
               url={item.image?.medium}
               title={item.name}
               onPress={() => {
-                //navegar para a tela de detalhes
+                navigate("Details", { show: item });
               }}
             />
           )}
