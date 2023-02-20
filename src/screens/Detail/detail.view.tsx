@@ -13,12 +13,17 @@ const Detail: React.FC = () => {
     params: { show },
   } = useRoute<DetailRouteProp>();
 
-  const { episodes, seasons } = useDetailController({ show });
-  console.log(
-    "🚀 ~ file: detail.view.tsx:17 ~ episodes, seasons",
+  const {
     episodes,
-    seasons
-  );
+    seasons,
+    formattedDate,
+    genres,
+    moreSummary,
+    schedule,
+    selectedSeason,
+    summaryWithoutHtml,
+    toggleMoreSummary,
+  } = useDetailController({ show });
 
   return <View style={{ flex: 1, backgroundColor: "red" }} />;
 };
