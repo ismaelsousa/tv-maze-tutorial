@@ -49,7 +49,7 @@ const useDetailController = ({ show }: UseDetailController) => {
       schedule = days.join(", ");
     }
     if (time) {
-      schedule += `${schedule} at ${time}`;
+      schedule = `${schedule} at ${time}`;
     }
     return schedule;
   }, [show]);
