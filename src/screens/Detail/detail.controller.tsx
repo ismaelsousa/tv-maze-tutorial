@@ -23,10 +23,7 @@ const useDetailController = ({ show }: UseDetailController) => {
    */
   const { addFavoriteShow, favoritesShows, removeFavoriteShow } =
     useFavoritesShows();
-  console.log(
-    "🚀 ~ file: detail.controller.tsx:25 ~ useDetailController ~ favoritesShows",
-    favoritesShows
-  );
+
   /**
    * Memos
    */
@@ -99,6 +96,9 @@ const useDetailController = ({ show }: UseDetailController) => {
     selectedSeason,
     setSelectedSeason,
     episodes,
+    addFavoriteShow,
+    favoritesShows,
+    removeFavoriteShow,
   };
 };
 
