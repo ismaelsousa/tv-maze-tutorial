@@ -87,6 +87,7 @@ const useDetailController = ({ show }: UseDetailController) => {
     toggleMoreSummary,
     seasons,
     selectedSeason,
+    setSelectedSeason,
     episodes,
   };
 };

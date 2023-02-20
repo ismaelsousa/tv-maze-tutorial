@@ -4,6 +4,6 @@ export interface SeasonsModalProps {
   visible: boolean;
   setVisible: (visible: boolean) => void;
   seasons: SeasonModel[];
-  selectedSeason: SeasonModel;
+  selectedSeason?: SeasonModel;
   setSelectedSeason: (season: SeasonModel) => void;
 }
