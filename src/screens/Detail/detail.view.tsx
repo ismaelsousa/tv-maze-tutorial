@@ -32,7 +32,6 @@ const Detail: React.FC = () => {
    * States
    */
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-  console.log(isModalVisible);
 
   const { colors, spacing } = useTheme();
   const { width } = useWindowDimensions();
@@ -48,6 +47,9 @@ const Detail: React.FC = () => {
     summaryWithoutHtml,
     toggleMoreSummary,
     setSelectedSeason,
+    addFavoriteShow,
+    favoritesShows,
+    removeFavoriteShow,
   } = useDetailController({ show });
 
   return (
@@ -64,8 +66,7 @@ const Detail: React.FC = () => {
             renderItem={({ item }) => <EpisodeCard episode={item} />}
             ItemSeparatorComponent={() => <Spacer height={spacing.md} />}
             ListHeaderComponent={() => {
-              const isFavorite = false;
-
+              const isFavorite = favoritesShows[show.id];
               return (
                 <View>
                   <RowCover>
@@ -77,7 +78,9 @@ const Detail: React.FC = () => {
                       <RowFavorite
                         onPress={() => {
                           if (isFavorite) {
-                            //TODO: remove from favorite
+                            removeFavoriteShow(show.id);
+                          } else {
+                            addFavoriteShow(show);
                           }
                         }}
                       >
