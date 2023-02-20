@@ -22,4 +22,5 @@ declare global {
    * useRoute types
    */
   export type DetailRouteProp = RouteProp<RoutesParamsList, "Details">;
+  export type PersonRouteProp = RouteProp<RoutesParamsList, "Person">;
 }
